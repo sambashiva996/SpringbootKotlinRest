@@ -38,4 +38,18 @@ class EmployeeController {
 
         return ResponseEntity<Employee>(employeeById,HttpStatus.OK)
     }
+
+    @PutMapping("/updateEmployee")
+    fun updateEmployee(@RequestBody updateEmployee: Employee):ResponseEntity<String>{
+
+        var updateEmployee = employeeService.updateEmployee(updateEmployee)
+        return ResponseEntity<String>("updated success with employee id :${updateEmployee.employeeId}",HttpStatus.OK)
+    }
+
+    @DeleteMapping("/deleteEmployeeById/{employeeId}")
+    fun deleteByEmployeeId(@PathVariable employeeId: Int):ResponseEntity<String>{
+
+        employeeService.deleteByEmployeeId(employeeId)
+        return ResponseEntity<String>("Employee Deleted Successfully",HttpStatus.OK)
+    }
 }

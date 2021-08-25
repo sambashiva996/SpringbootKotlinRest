@@ -25,5 +25,13 @@ class EmployeeServiceImpl: EmployeeService {
         return employeeRepository.findById(employeeId).get()
     }
 
+    override fun updateEmployee(updateEmployee: Employee): Employee {
+        return employeeRepository.save(updateEmployee)
+    }
+
+    override fun deleteByEmployeeId(employeeId: Int) {
+          employeeRepository.deleteById(employeeId)
+    }
+
 
 }
